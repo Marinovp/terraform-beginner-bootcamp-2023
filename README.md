@@ -33,3 +33,10 @@ Add Shebang to the first line of the script. See ([install_terraform_cli])(./bin
 Need to fix the permission on the file to executable using chmod, this will make the bash script executable.
 See [Chmod](https://www.geeksforgeeks.org/chmod-command-linux)
 
+### Printing vars in Linux
+
+To print an env var using echo eg. `echo $HELLO`
+
+### Scoping of env vars
+
+If you want to env vars to persist accros all future basgh terminals that are open you need to set env vards
