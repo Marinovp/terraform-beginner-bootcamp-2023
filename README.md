@@ -63,3 +63,15 @@ If its succesful you should see a json payload return that look like this
 }```
 
 We'll need to generate AWS CLI credentials.
+
+Issues when running scripts install_aws_cli
+
+#Found preexisting AWS CLI installation: /usr/local/aws-cli/v2/current. Please rerun install script with --update flag.
+Solutionl: updated the script and added --update to 
+```
+sudo ./aws/install --update
+```
+
+#Partial credentials found in env, missing: AWS_SECRET_ACCESS_KEY
+Reimported the AWS_SECRE_ACCESS_KEY using the following command:
+export AWS_SECRET_ACCESS_KEY=[access key]
