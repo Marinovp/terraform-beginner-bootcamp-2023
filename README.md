@@ -40,3 +40,26 @@ To print an env var using echo eg. `echo $HELLO`
 ### Scoping of env vars
 
 If you want to env vars to persist accros all future basgh terminals that are open you need to set env vards
+
+### AWS CLI Installation
+AWS CLI is installed for this project via the bash script []'./bin/install_aws_cli'](./bin/install_aws_cli)
+
+[Getting Started Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+
+We can check if our AWS credentiasl are configured correctly by running the follwoing command:
+
+```
+aws sts get-caller-identity
+```
+
+If its succesful you should see a json payload return that look like this
+
+```
+{
+    "UserId": "[user id]",
+    "Account": "[AccountID]",
+    "Arn": "[arn ]"
+}```
+
+We'll need to generate AWS CLI credentials.
