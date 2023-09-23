@@ -1,4 +1,12 @@
 terraform {
+  cloud {
+    organization = "marinovp"
+
+    workspaces {
+      name = "terra-house-mvp"
+    }
+  }
+  
   required_providers {
     ##https://registry.terraform.io/providers/hashicorp/random/latest/docs
     random = {

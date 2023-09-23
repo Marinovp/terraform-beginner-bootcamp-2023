@@ -135,3 +135,20 @@ If you lose this file, you lose knowing the state of your infrastructure.
 ### Terraform directory
 
 `.terraform` directory contains binaries of terraform providers.
+
+
+### Issues with Terraform Login and GitPod workspace
+
+When trying to loging to Terraform Cloud using ```terraform login```, did not work
+To fix this, create the file manually from the error and modify using the credentials
+Need to generate the token first
+
+```
+{
+        "credentials":{
+         "app.terraform.io":{
+           "token":"[terraform token]"
+         }
+        }
+}
+```
