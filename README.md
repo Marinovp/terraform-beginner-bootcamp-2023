@@ -113,6 +113,10 @@ This will plan and pass the changeset to be plan and executed
 To automatically approved an apply, this can be done using the `--auto-approve`
 eg. `terraform apply -auto-approve`
 
+### Terraform Destroy
+command: `terraform destroy`
+This will destroy rerources created by tge apply command.
+
 ### Terraform Lock Files
 `.terraform.lock.hcl` contains the locked versioning for the providers or modules that should be used with this project.
 
