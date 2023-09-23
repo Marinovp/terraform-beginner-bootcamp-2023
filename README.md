@@ -152,3 +152,5 @@ Need to generate the token first
         }
 }
 ```
+
+We have automated this workaroiund with the following bash script [bin/generate_tfrc_credentials]
