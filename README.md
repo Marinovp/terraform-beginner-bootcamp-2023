@@ -43,6 +43,26 @@ This is the defauklt file to load in terraform variables in bulk
 - TODO: document which terraform settings take precedence.
 
 
+## Dealing with Configuration Drift
+
+## What happen if we lose our state file
+
+  If this happens most like you will have to tear down all your infrastructure.
+  With the terraform import you can recover some of it.
+  Check the terraform import for waht is supported to re-import.
+  
+### Fix missing Resources with Terraform Drift
+`terraform import aws_s3_bucket.example [bucket name]`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+
+You can reimport the bucket if it get deleted
+## Fix Manual configuration
+
+If someone goes and delete or modified cloud resources manually through ClickOps (Amazon UI).
+
+If we run Terraform Plan again it will attempt to put our infrastructure back into the expected state fixing Configuration Drift.
+
 ### Notes to self
 Format for tf file is important, for example:
 ```
@@ -53,9 +73,11 @@ variable "user_uuid" {
     condition        = can(regex("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$", var.user_uuid))
     error_message    = "The user_uuid value is not a valid UUID."
   }
-}```
+}
+```
 
 Is not the same as :
+
 ```
 variable "user_uuid" {
   description = "The UUID of the user"
