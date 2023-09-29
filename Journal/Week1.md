@@ -6,10 +6,10 @@ Root module structure should be as follow:
                 Terraform Project Structure
       PROJECT ROOT
       ├── main.tf            # everything else
-      ├── variables.tf       # stores the structure of input variables
-      ├── providers.tf       # defines required providers and their configuration
       ├── outputs.tf         # stores our outputs
+      ├── providers.tf       # defines required providers andtheir configuration
       ├── terraform.tfvars   # the data of variables we want to load into our Terraform project
+      ├── variables.tf       # stores the structure of input variables
       └── README.md          # Required for Root modules
 
 [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
