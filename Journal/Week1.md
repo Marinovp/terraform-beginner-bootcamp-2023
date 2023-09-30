@@ -111,3 +111,19 @@ module "terrahouse_aws" {
 
 
 [Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Considerations when using AI to write terraform
+
+AI might not be trained on latest documentation.
+Examples might be olders which will affect the final code.
+Always check Terraform Registry
+
+## Working with files in Terraform
+
+In Terraform there is a special variable called `path` that allow us to reference local paths:
+- path.module   # Get the path for the current module
+- path.root     # Get the path for the root of module
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+## eTag
+This will tell you if the data change in any of the files since Terraform does not check for data changes.
