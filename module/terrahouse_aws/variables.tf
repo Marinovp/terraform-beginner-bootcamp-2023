@@ -15,3 +15,23 @@ variable "bucket_name" {
     error_message = "The bucket_name must be a valid S3 bucket name. For more information, see https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html."
   }
 }
+
+variable "index_html_filepath" {
+  description = "The file path for index.html"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.index_html_filepath)
+    error_message = "The provided path for index.html does not exist."
+  }
+}
+
+variable "error_html_filepath" {
+  description = "The file path for error.html"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.error_html_filepath)
+    error_message = "The provided path for error.html does not exist."
+  }
+}
