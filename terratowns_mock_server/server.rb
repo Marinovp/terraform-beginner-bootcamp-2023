@@ -3,22 +3,55 @@ require 'json'
 require 'pry'
 require 'active_model'
 
+# We will mock having a state or database for this development server
+# by setting a global variable. You would never use a global variable 
+# in a PROD server.
 $home = {}
 
+# This is a ruby class that includes validations from ActiveRecord.
+# RThis will represent our Home resources as a ruby object
 class Home
+  # ActiveModel is part of Ruby on Rails.
+  # it is used as an ORM. It has a module within
+  # ActiveModel that provides validations.
+  # The production Terratowns server is rails and uses
+  # very similar and in most cases identical validation
+  # https://guides.rubyonrails.org/active_model_basics.html
+  # https://guides.rubyonrails.org/active_record_validations.html
   include ActiveModel::Validations
-  attr_accessor :town, :name, :description, :domain_name, :content_version
 
-  validates :town, presence: true
+  # Create some virtual actributes to stored on this object.
+  # This will set a getter and setter
+  # eg.
+  # home = new Home()
+  # home.town = 'Hello' # setter
+  # home.town() # Getter
+   attr_accessor :town, :name, :description, :domain_name, :content_version
+
+  # gamers-togo
+  # cooker-cove
+  validates :town, presence: true ,inclusion: { in: [
+    'missingo',
+    'cooker-cove',
+    'melomaniac-mansion',
+    'gamers-grotto',
+    'video-valley',
+    'the-nomad-pad'
+    ]}
   validates :name, presence: true
   validates :description, presence: true
   validates :domain_name, 
     format: { with: /\.cloudfront\.net\z/, message: "domain must be from .cloudfront.net" }
     # uniqueness: true, 
 
+  # content_version has to be an integer
+  # we will make sure is an increemental version in the controller  
   validates :content_version, numericality: { only_integer: true }
 end
 
+
+# WE are extending a calss from Sinatra::Base to
+# turn this generic class to utilize the sinatra-web-framework
 class TerraTownsMockServer < Sinatra::Base
 
   def error code, message
@@ -39,12 +72,13 @@ class TerraTownsMockServer < Sinatra::Base
     end
   end
 
+  # Return an hardcoded access token
   def x_access_code
-    '9b49b3fb-b8e9-483c-b703-97ba88eef8e0'
+    return '9b49b3fb-b8e9-483c-b703-97ba88eef8e0'
   end
 
   def x_user_uuid
-    'e328f4ab-b99f-421c-84c9-4ccea042c7d1'
+    return 'e328f4ab-b99f-421c-84c9-4ccea042c7d1'
   end
 
   def find_user_by_bearer_token
@@ -69,7 +103,7 @@ class TerraTownsMockServer < Sinatra::Base
 
   # CREATE
   post '/api/u/:user_uuid/homes' do
-    ensure_correct_headings
+    ensure_correct_headings 
     find_user_by_bearer_token
     puts "# create - POST /api/homes"
 
@@ -185,4 +219,5 @@ class TerraTownsMockServer < Sinatra::Base
   end
 end
 
+# This i what will run the server
 TerraTownsMockServer.run!
