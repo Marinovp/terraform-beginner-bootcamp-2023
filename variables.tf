@@ -31,3 +31,10 @@ variable "assets_path" {
   description = "Path to assets folder"
   type = string
 }
+
+variable "arcanum" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
+}
