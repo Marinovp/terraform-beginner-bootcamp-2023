@@ -27,11 +27,7 @@ module "home_arcanum_hosting" {
   source = "./module/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
   public_path = var.arcanum.public_path
-  bucket_name = var.bucket_name
-  # index_html_filepath = var.index_html_filepath
-  # error_html_filepath = var.error_html_filepath
-  # assets_path = var.assets_path
-  content_version = var.content_version
+  content_version = var.arcanum.content_version
 }
 
 resource "terratowns_home" "home" {
@@ -48,25 +44,21 @@ DESCRIPTION
   content_version = var.arcanum.content_version
 }
 
-# # House #2
-# module "home_payday_hosting" {
-#   source = "./module/terrahome_aws"
-#   user_uuid = var.teacherseat_user_uuid
-#   public_path = var.payday_public_path
-#   bucket_name = var.bucket_name
-#   # index_html_filepath = var.index_html_filepath
-#   # error_html_filepath = var.error_html_filepath
-#   # assets_path = var.assets_path
-#   content_version = var.content_version
-# }
+# House #2
+module "home_payday_hosting" {
+  source = "./module/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.payday.public_path
+  content_version = var.payday.content_version
+}
 
-# resource "terratowns_home" "home_payday" {
-#   name = "Making your own Payday Bar"
-#   description = <<DESCRIPTION
-#   Payday bar are expensive. Need to learn how to create one, and save money
-# DESCRIPTION
-#   domain_name = module.home_payday_hosting.domain_name
-#   #domain_name = "*.cloudfront.net"
-#   town = "missingo"
-#   content_version = 1
-# }
+resource "terratowns_home" "home_payday" {
+  name = "Making your own Payday Bar"
+  description = <<DESCRIPTION
+  Payday bar are expensive. Need to learn how to create one, and save money
+DESCRIPTION
+  domain_name = module.home_payday_hosting.domain_name
+  #domain_name = "*.cloudfront.net"
+  town = "missingo"
+  content_version = var.payday.content_version
+}
