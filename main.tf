@@ -59,5 +59,6 @@ resource "terratowns_home" "home_payday" {
 DESCRIPTION
   domain_name = module.home_payday_hosting.domain_name
   town = "cooker-cove"
+
   content_version = var.payday.content_version
 }
