@@ -5,13 +5,13 @@ terraform {
       version = "1.0.0"
     }
   }
-#   cloud {
-#     organization = "marinovp"
+  cloud {
+    organization = "marinovp"
 
-#     workspaces {
-#       name = "terra-house-mvp"
-#     }
-#   }
+    workspaces {
+      name = "terra-house-mvp"
+    }
+  }
   
 }
 
@@ -21,14 +21,13 @@ provider "terratowns" {
   token =  var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./module/terrahouse_aws"
+# House #1
+
+module "home_arcanum_hosting" {
+  source = "./module/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  assets_path = var.assets_path
-  content_version = var.content_version
+  public_path = var.arcanum.public_path
+  content_version = var.arcanum.content_version
 }
 
 resource "terratowns_home" "home" {
@@ -39,8 +38,27 @@ Modders have removed all the originals making this game really fun
 to play (despite that old look graphics). This is my guide that will
 show you how to play arcanum without spoiling the plot.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_arcanum_hosting.domain_name
   #domain_name = "*.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.arcanum.content_version
+}
+
+# House #2
+module "home_payday_hosting" {
+  source = "./module/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.payday.public_path
+  content_version = var.payday.content_version
+}
+
+resource "terratowns_home" "home_payday" {
+  name = "Making your own Payday Bar"
+  description = <<DESCRIPTION
+  Payday bar are expensive. Need to learn how to create one, and save money
+DESCRIPTION
+  domain_name = module.home_payday_hosting.domain_name
+  #domain_name = "*.cloudfront.net"
+  town = "missingo"
+  content_version = var.payday.content_version
 }
