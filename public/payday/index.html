@@ -1,14 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcanum!!!!!!!!</title>
+  <title>Restaurant Name</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    img {
+      max-width: 100%;
+    }
+    .menu {
+      list-style-type: none;
+      padding: 0;
+    }
+    .menu-item {
+      margin-bottom: 10px;
+    }
+    .menu-item-name {
+      font-size: 18px;
+    }
+    .menu-item-price {
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Dominican Chocolate</h1>
-    <h1> Drink Chocolate </h1>
-    <img src="/assets/Chocolate.jpeg">
-                          
+  <h1>Restaurant Name</h1>
+  <img src="https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg" alt="Restaurant food">
+
+  <h2>Menu</h2>
+  <ul class="menu">
+    <li class="menu-item">
+      <h3 class="menu-item-name">Appetizers</h3>
+      <ul>
+        <li class="menu-item">
+          <span class="menu-item-name">Mozzarella Sticks</span>
+          <span class="menu-item-price">$10.99</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Fried Calamari</span>
+          <span class="menu-item-price">$12.99</span>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <h3 class="menu-item-name">Main Courses</h3>
+      <ul>
+        <li class="menu-item">
+          <span class="menu-item-name">Spaghetti and Meatballs</span>
+          <span class="menu-item-price">$16.99</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Chicken Parmesan</span>
+          <span class="menu-item-price">$18.99</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">New York Strip Steak</span>
+          <span class="menu-item-price">$29.99</span>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <h3 class="menu-item-name">Desserts</h3>
+      <ul>
+        <li class="menu-item">
+          <span class="menu-item-name">Tiramisu</span>
+          <span class="menu-item-price">$7.99</span>
+        </li>
+        <span class="menu-item-name">New York Cheesecake</span>
+          <span class="menu-item-price">$8.99</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </body>
 </html>

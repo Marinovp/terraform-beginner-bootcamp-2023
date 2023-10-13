@@ -40,7 +40,7 @@ show you how to play arcanum without spoiling the plot.
 DESCRIPTION
   domain_name = module.home_arcanum_hosting.domain_name
   #domain_name = "*.cloudfront.net"
-  town = "missingo"
+  town = "gamers-grotto"
   content_version = var.arcanum.content_version
 }
 
@@ -53,12 +53,11 @@ module "home_payday_hosting" {
 }
 
 resource "terratowns_home" "home_payday" {
-  name = "Making your own Payday Bar"
+  name = "Restaurant Menu"
   description = <<DESCRIPTION
-  Payday bar are expensive. Need to learn how to create one, and save money
+  Check the restaurant menu to order.
 DESCRIPTION
   domain_name = module.home_payday_hosting.domain_name
-  #domain_name = "*.cloudfront.net"
-  town = "missingo"
+  town = "cooker-cove"
   content_version = var.payday.content_version
 }
